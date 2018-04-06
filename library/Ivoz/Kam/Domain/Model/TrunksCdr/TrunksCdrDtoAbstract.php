@@ -118,7 +118,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     private $peeringContract;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\Destination\DestinationDto | null
+     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto | null
      */
     private $destination;
 
@@ -212,7 +212,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
-        $this->destination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination', $this->getDestinationId());
+        $this->destination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination', $this->getDestinationId());
         $this->destinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
     }
 
@@ -749,11 +749,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationDto $destination
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto $destination
      *
      * @return static
      */
-    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationDto $destination = null)
+    public function setDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto $destination = null)
     {
         $this->destination = $destination;
 
@@ -761,7 +761,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationDto
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto
      */
     public function getDestination()
     {
@@ -776,7 +776,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     public function setDestinationId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\Destination\DestinationDto($id)
+            ? new \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto($id)
             : null;
 
         return $this->setDestination($value);

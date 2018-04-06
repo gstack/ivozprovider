@@ -15,6 +15,13 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
         - tpid
         - tag
         - destinations_tag
+  embedded:
+    destination:
+      class: Destination
+      columnPrefix: false
+    rate:
+      class: Rate
+      columnPrefix: false
   fields:
     tpid:
       type: string
@@ -89,30 +96,6 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
       inversedBy: tpDestinationRates
       joinColumns:
         destinationRateId:
-          nullable: false
-          referencedColumnName: id
-          onDelete: cascade
-      orphanRemoval: false
-    destination:
-      targetEntity: \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: tpDestination
-      joinColumns:
-        destinationId:
-          nullable: false
-          referencedColumnName: id
-          onDelete: cascade
-      orphanRemoval: false
-    rate:
-      targetEntity: \Ivoz\Cgr\Domain\Model\Rate\RateInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        rateId:
           nullable: false
           referencedColumnName: id
           onDelete: cascade

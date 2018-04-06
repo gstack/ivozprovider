@@ -24,6 +24,22 @@ interface DestinationRateInterface extends EntityInterface
     public function getTag();
 
     /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return self
+     */
+    public function setStatus($status = null);
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
@@ -70,6 +86,22 @@ interface DestinationRateInterface extends EntityInterface
      * @return \Ivoz\Cgr\Domain\Model\DestinationRate\Description
      */
     public function getDescription();
+
+    /**
+     * Set file
+     *
+     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\File $file
+     *
+     * @return self
+     */
+    public function setFile(\Ivoz\Cgr\Domain\Model\DestinationRate\File $file);
+
+    /**
+     * Get file
+     *
+     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\File
+     */
+    public function getFile();
 
     /**
      * Add tpDestinationRate

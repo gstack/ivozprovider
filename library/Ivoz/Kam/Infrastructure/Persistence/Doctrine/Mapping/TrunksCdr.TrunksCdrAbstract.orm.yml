@@ -162,7 +162,7 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
           onDelete: set null
       orphanRemoval: false
     destination:
-      targetEntity: \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+      targetEntity: \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null

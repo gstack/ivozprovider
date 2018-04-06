@@ -329,16 +329,16 @@ interface TrunksCdrInterface extends EntityInterface
     /**
      * Set destination
      *
-     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $destination
      *
      * @return self
      */
-    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination = null);
+    public function setDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $destination = null);
 
     /**
      * Get destination
      *
-     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
      */
     public function getDestination();
 

@@ -43,8 +43,8 @@ popd
 
 if [ ${CACHE_CLEAR} -eq 1 ]; then
     pushd /opt/irontec/ivozprovider/web/rest/
-        php bin/console cache:clear -e dev
-        php bin/console cache:clear -e prod
+        rm -fr var/cache/dev/*
+        rm -fr var/cache/prod/*
         php bin/console api:swagger:export -e prod > web/swagger.json
     popd
 fi
