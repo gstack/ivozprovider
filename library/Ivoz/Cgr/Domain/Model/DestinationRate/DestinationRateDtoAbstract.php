@@ -68,9 +68,9 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     private $brand;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto[] | null
+     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto | null
      */
-    private $tpDestinationRates = null;
+    private $tpDestinationRate;
 
 
     use DtoNormalizer;
@@ -96,7 +96,8 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
             'name' => ['en','es'],
             'description' => ['en','es'],
             'file' => ['fileSize','mimeType','baseName'],
-            'brandId' => 'brand'
+            'brandId' => 'brand',
+            'tpDestinationRateId' => 'tpDestinationRate'
         ];
     }
 
@@ -123,7 +124,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
                 'baseName' => $this->getFileBaseName()
             ],
             'brand' => $this->getBrand(),
-            'tpDestinationRates' => $this->getTpDestinationRates()
+            'tpDestinationRate' => $this->getTpDestinationRate()
         ];
     }
 
@@ -133,17 +134,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        if (!is_null($this->tpDestinationRates)) {
-            $items = $this->getTpDestinationRates();
-            $this->tpDestinationRates = [];
-            foreach ($items as $item) {
-                $this->tpDestinationRates[] = $transformer->transform(
-                    'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
+        $this->tpDestinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate', $this->getTpDestinationRateId());
     }
 
     /**
@@ -151,10 +142,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-        $this->tpDestinationRates = $transformer->transform(
-            'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate',
-            $this->tpDestinationRates
-        );
+
     }
 
     /**
@@ -404,23 +392,49 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $tpDestinationRates
+     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto $tpDestinationRate
      *
      * @return static
      */
-    public function setTpDestinationRates($tpDestinationRates = null)
+    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto $tpDestinationRate = null)
     {
-        $this->tpDestinationRates = $tpDestinationRates;
+        $this->tpDestinationRate = $tpDestinationRate;
 
         return $this;
     }
 
     /**
-     * @return array
+     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto
      */
-    public function getTpDestinationRates()
+    public function getTpDestinationRate()
     {
-        return $this->tpDestinationRates;
+        return $this->tpDestinationRate;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTpDestinationRateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto($id)
+            : null;
+
+        return $this->setTpDestinationRate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTpDestinationRateId()
+    {
+        if ($dto = $this->getTpDestinationRate()) {
+            return $dto->getId();
+        }
+
+        return null;
     }
 }
 

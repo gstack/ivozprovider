@@ -1037,7 +1037,7 @@ public function <methodName>(<criteriaArgument>)
             }
 
             if ($associationMapping['type'] & ClassMetadataInfo::TO_ONE) {
-                $nullable = $this->isAssociationIsNullable($associationMapping) ? 'null' : null;
+                $nullable = $this->isAssociationNullable($associationMapping) ? 'null' : null;
 
                 if ($code = $this->generateEntityStubMethod($metadata, 'set', $associationMapping['fieldName'], $associationMapping['targetEntity'], $nullable)) {
                     $methods[] = $code;
@@ -1142,7 +1142,7 @@ public function <methodName>(<criteriaArgument>)
     /**
      * {@inheritDoc}
      */
-    protected function isAssociationIsNullable($associationMapping)
+    protected function isAssociationNullable($associationMapping)
     {
         $isOneToOne = $associationMapping['type'] === ClassMetadataInfo::ONE_TO_ONE;
         if ($associationMapping['inversedBy'] && !$isOneToOne) {
@@ -1153,7 +1153,7 @@ public function <methodName>(<criteriaArgument>)
             return !$associationMapping['isOwningSide'];
         }
 
-        return parent::isAssociationIsNullable($associationMapping);
+        return parent::isAssociationNullable($associationMapping);
     }
 
     /**

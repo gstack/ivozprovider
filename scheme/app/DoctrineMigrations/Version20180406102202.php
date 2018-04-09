@@ -25,7 +25,6 @@ class Version20180406102202 extends AbstractMigration
         $this->addSql('ALTER TABLE tp_rates DROP FOREIGN KEY FK_DE7E762B925F3C99');
         $this->addSql('DROP TABLE Destinations');
         $this->addSql('DROP TABLE Rates');
-        $this->addSql('ALTER TABLE kam_trunks_cdrs DROP FOREIGN KEY FK_92E58EB6BF3434FC');
         $this->addSql('ALTER TABLE kam_trunks_cdrs ADD CONSTRAINT FK_92E58EB6BF3434FC FOREIGN KEY (destinationId) REFERENCES tp_destinations (id) ON DELETE SET NULL');
         $this->addSql('DROP INDEX IDX_DE7E762B925F3C99 ON tp_rates');
         $this->addSql('DROP INDEX unique_tprate ON tp_rates');

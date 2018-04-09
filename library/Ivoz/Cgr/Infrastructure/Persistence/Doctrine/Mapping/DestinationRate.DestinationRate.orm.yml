@@ -14,7 +14,7 @@ Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate:
   lifecycleCallbacks:
     postLoad:
       - initChangelog
-  oneToMany:
-    tpDestinationRates:
+  oneToOne:
+    tpDestinationRate:
       targetEntity: Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
       mappedBy: destinationRate

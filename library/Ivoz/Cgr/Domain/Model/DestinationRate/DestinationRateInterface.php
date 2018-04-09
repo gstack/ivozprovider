@@ -3,7 +3,6 @@
 namespace Ivoz\Cgr\Domain\Model\DestinationRate;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Doctrine\Common\Collections\Collection;
 
 interface DestinationRateInterface extends EntityInterface
 {
@@ -104,35 +103,20 @@ interface DestinationRateInterface extends EntityInterface
     public function getFile();
 
     /**
-     * Add tpDestinationRate
+     * Set tpDestinationRate
      *
      * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
      *
-     * @return DestinationRateTrait
-     */
-    public function addTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate);
-
-    /**
-     * Remove tpDestinationRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
-     */
-    public function removeTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate);
-
-    /**
-     * Replace tpDestinationRates
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface[] $tpDestinationRates
      * @return self
      */
-    public function replaceTpDestinationRates(Collection $tpDestinationRates);
+    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate = null);
 
     /**
-     * Get tpDestinationRates
+     * Get tpDestinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface[]
+     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
      */
-    public function getTpDestinationRates(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getTpDestinationRate();
 
 }
 

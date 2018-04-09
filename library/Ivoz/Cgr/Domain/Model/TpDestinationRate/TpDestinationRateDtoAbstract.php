@@ -97,6 +97,16 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
      */
     private $destinationRate;
 
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto | null
+     */
+    private $tpDestination;
+
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto | null
+     */
+    private $tpRate;
+
 
     use DtoNormalizer;
 
@@ -127,7 +137,9 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
             'id' => 'id',
             'destination' => ['prefix','prefixName'],
             'rate' => ['cost','connectFee','rateIncrement','groupIntervalStart'],
-            'destinationRateId' => 'destinationRate'
+            'destinationRateId' => 'destinationRate',
+            'tpDestinationId' => 'tpDestination',
+            'tpRateId' => 'tpRate'
         ];
     }
 
@@ -157,7 +169,9 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
                 'rateIncrement' => $this->getRateRateIncrement(),
                 'groupIntervalStart' => $this->getRateGroupIntervalStart()
             ],
-            'destinationRate' => $this->getDestinationRate()
+            'destinationRate' => $this->getDestinationRate(),
+            'tpDestination' => $this->getTpDestination(),
+            'tpRate' => $this->getTpRate()
         ];
     }
 
@@ -167,6 +181,8 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->destinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
+        $this->tpDestination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination', $this->getTpDestinationId());
+        $this->tpRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpRate\\TpRate', $this->getTpRateId());
     }
 
     /**
@@ -537,6 +553,98 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     public function getDestinationRateId()
     {
         if ($dto = $this->getDestinationRate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto $tpDestination
+     *
+     * @return static
+     */
+    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto $tpDestination = null)
+    {
+        $this->tpDestination = $tpDestination;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto
+     */
+    public function getTpDestination()
+    {
+        return $this->tpDestination;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTpDestinationId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto($id)
+            : null;
+
+        return $this->setTpDestination($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTpDestinationId()
+    {
+        if ($dto = $this->getTpDestination()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto $tpRate
+     *
+     * @return static
+     */
+    public function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateDto $tpRate = null)
+    {
+        $this->tpRate = $tpRate;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto
+     */
+    public function getTpRate()
+    {
+        return $this->tpRate;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTpRateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto($id)
+            : null;
+
+        return $this->setTpRate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTpRateId()
+    {
+        if ($dto = $this->getTpRate()) {
             return $dto->getId();
         }
 

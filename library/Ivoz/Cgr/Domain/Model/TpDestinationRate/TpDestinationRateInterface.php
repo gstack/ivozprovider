@@ -157,7 +157,7 @@ interface TpDestinationRateInterface extends EntityInterface
      *
      * @return self
      */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null);
+    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
 
     /**
      * Get destinationRate
@@ -197,6 +197,38 @@ interface TpDestinationRateInterface extends EntityInterface
      * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\Rate
      */
     public function getRate();
+
+    /**
+     * Set tpDestination
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
+     *
+     * @return self
+     */
+    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null);
+
+    /**
+     * Get tpDestination
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+     */
+    public function getTpDestination();
+
+    /**
+     * Set tpRate
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate
+     *
+     * @return self
+     */
+    public function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate = null);
+
+    /**
+     * Get tpRate
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
+     */
+    public function getTpRate();
 
 }
 

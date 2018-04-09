@@ -557,7 +557,7 @@ abstract class TpDestinationRateAbstract
      *
      * @return self
      */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null)
+    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
     {
         $this->destinationRate = $destinationRate;
 

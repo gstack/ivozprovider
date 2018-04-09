@@ -53,13 +53,13 @@ Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract:
       options:
         default: CURRENT_TIMESTAMP
       column: created_at
-  manyToOne:
+  oneToOne:
     tpDestinationRate:
       targetEntity: \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: tpDestination
       joinColumns:
         tpDestinationRateId:
           nullable: false
